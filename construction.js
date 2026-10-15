@@ -23,7 +23,23 @@
     contactObserver.observe(contactSection);
   }
 
-  if ('IntersectionObserver' in window && !prefersReducedMotion) {
+  const gsap = window.gsap;
+  const gsapEnabled = Boolean(gsap && window.ScrollTrigger && !prefersReducedMotion);
+  if (gsapEnabled) {
+    gsap.registerPlugin(window.ScrollTrigger);
+    const revealMedia = gsap.matchMedia();
+    revealMedia.add({ desktop: '(min-width: 641px)', mobile: '(max-width: 640px)' }, ({ conditions }) => {
+      const lift = conditions.mobile ? 22 : 38;
+      document.querySelectorAll('.reveal').forEach((element, index) => {
+        gsap.fromTo(element, { autoAlpha: 0, y: lift, scale: element.classList.contains('project-card') ? .985 : 1 }, {
+          autoAlpha: 1, y: 0, scale: 1, duration: conditions.mobile ? .72 : .9,
+          delay: element.classList.contains('project-card') ? (index % 3) * .08 : 0,
+          ease: 'power3.out', overwrite: 'auto',
+          scrollTrigger: { trigger: element, start: 'top 88%', once: true }
+        });
+      });
+    });
+  } else if ('IntersectionObserver' in window && !prefersReducedMotion) {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
@@ -98,8 +114,17 @@
   const replay = journey.querySelector('.stage-replay');
   let current = 0;
   let timer;
+  let phaseHasRendered = false;
+  if (gsapEnabled) {
+    const crane = journey.querySelector('.crane');
+    if (crane) {
+      crane.style.animation = 'none';
+      gsap.to(crane, { rotation: 1.15, duration: .78, ease: 'sine.inOut', repeat: -1, yoyo: true, transformOrigin: '112px 391px' });
+    }
+  }
 
   const showPhase = index => {
+    const previous = current;
     current = Math.max(0, Math.min(phases.length - 1, index));
     const phase = phases[current];
     journey.dataset.current = String(current);
@@ -108,6 +133,12 @@
     title.textContent = phase.title;
     description.textContent = phase.description;
     layers.forEach(layer => layer.classList.toggle('is-built', Number(layer.dataset.step) <= current));
+    if (gsapEnabled && phaseHasRendered) {
+      const newlyBuilt = layers.filter(layer => Number(layer.dataset.step) > previous && Number(layer.dataset.step) <= current);
+      if (newlyBuilt.length) gsap.fromTo(newlyBuilt, { autoAlpha: 0, y: 24, scaleY: .9, transformOrigin: '50% 100%' }, { autoAlpha: 1, y: 0, scaleY: 1, duration: .72, stagger: .075, ease: 'back.out(1.25)', overwrite: 'auto' });
+      gsap.fromTo([label, title, description], { autoAlpha: 0, y: 13 }, { autoAlpha: 1, y: 0, duration: .48, stagger: .055, ease: 'power2.out', overwrite: 'auto' });
+    }
+    phaseHasRendered = true;
     dots.forEach((dot, dotIndex) => {
       dot.classList.toggle('is-active', dotIndex === current);
       dot.classList.toggle('is-built', dotIndex < current);
