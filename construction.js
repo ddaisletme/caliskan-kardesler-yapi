@@ -29,15 +29,41 @@
     gsap.registerPlugin(window.ScrollTrigger);
     const revealMedia = gsap.matchMedia();
     revealMedia.add({ desktop: '(min-width: 641px)', mobile: '(max-width: 640px)' }, ({ conditions }) => {
-      const lift = conditions.mobile ? 22 : 38;
+      const isMobile = conditions.mobile;
+      const lift = isMobile ? 34 : 62;
       document.querySelectorAll('.reveal').forEach((element, index) => {
-        gsap.fromTo(element, { autoAlpha: 0, y: lift, scale: element.classList.contains('project-card') ? .985 : 1 }, {
-          autoAlpha: 1, y: 0, scale: 1, duration: conditions.mobile ? .72 : .9,
-          delay: element.classList.contains('project-card') ? (index % 3) * .08 : 0,
-          ease: 'power3.out', overwrite: 'auto',
-          scrollTrigger: { trigger: element, start: 'top 88%', once: true }
+        gsap.fromTo(element, {
+          autoAlpha: 0,
+          y: lift,
+          scale: element.classList.contains('project-card') ? .94 : .975,
+          filter: 'blur(10px)'
+        }, {
+          autoAlpha: 1,
+          y: 0,
+          scale: 1,
+          filter: 'blur(0px)',
+          duration: isMobile ? .95 : 1.15,
+          delay: element.classList.contains('project-card') ? (index % 3) * .12 : 0,
+          ease: 'power3.out',
+          overwrite: 'auto',
+          scrollTrigger: { trigger: element, start: isMobile ? 'top 92%' : 'top 88%', once: true }
         });
       });
+
+      document.querySelectorAll('.project-card img, .approach-image img').forEach(image => {
+        gsap.fromTo(image, { objectPosition: '50% 34%' }, {
+          objectPosition: '50% 66%',
+          ease: 'none',
+          scrollTrigger: { trigger: image.parentElement, start: 'top bottom', end: 'bottom top', scrub: isMobile ? .55 : .9 }
+        });
+      });
+    });
+
+    const entranceItems = [
+      ...document.querySelectorAll('.build-hero .hero-content .eyebrow, .build-hero h1, .build-hero .hero-lead, .build-hero .hero-actions, .build-stage-head, .build-scene, .stage-copy, .stage-controls')
+    ];
+    gsap.fromTo(entranceItems, { autoAlpha: 0, y: 38, filter: 'blur(8px)' }, {
+      autoAlpha: 1, y: 0, filter: 'blur(0px)', duration: .95, stagger: .105, delay: .08, ease: 'power3.out', overwrite: 'auto'
     });
   } else if ('IntersectionObserver' in window && !prefersReducedMotion) {
     const observer = new IntersectionObserver(entries => {
@@ -119,7 +145,13 @@
     const crane = journey.querySelector('.crane');
     if (crane) {
       crane.style.animation = 'none';
-      gsap.to(crane, { rotation: 1.15, duration: .78, ease: 'sine.inOut', repeat: -1, yoyo: true, transformOrigin: '112px 391px' });
+      const boom = crane.querySelector('path:nth-of-type(2)');
+      if (boom) boom.style.animation = 'none';
+      gsap.to(crane, { rotation: 2.1, duration: .62, ease: 'sine.inOut', repeat: -1, yoyo: true, transformOrigin: '112px 391px' });
+      const trolley = crane.querySelector('circle');
+      const cable = crane.querySelector('path:nth-of-type(4)');
+      if (trolley && cable) gsap.to([trolley, cable], { x: 30, duration: 1.05, ease: 'sine.inOut', repeat: -1, yoyo: true });
+      gsap.to(crane, { filter: 'drop-shadow(0 0 10px rgba(243,202,121,.5))', duration: 1.1, ease: 'sine.inOut', repeat: -1, yoyo: true });
     }
   }
 
