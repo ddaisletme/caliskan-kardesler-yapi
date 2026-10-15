@@ -9,3 +9,6 @@
 @media(max-width:380px){.build-hero{padding-top:96px;gap:16px}.build-hero h1{font-size:49px}.build-scene{height:210px}.stage-copy h2{font-size:15px}.stage-copy p{font-size:7px}}
 @media(max-width:640px) and (max-height:740px){.build-hero{padding-top:82px;gap:8px}.build-hero .hero-content .eyebrow{margin-bottom:11px}.build-hero h1{font-size:clamp(44px,11.4vw,56px)}.build-hero .hero-lead{margin:7px 0 8px}.build-hero .hero-actions{display:none}.build-scene{height:clamp(190px,51vw,205px)}.stage-copy{min-height:56px;padding:8px 0 6px}.stage-copy h2{font-size:15px}.stage-copy p{font-size:10px}.stage-controls{padding-top:6px}}
 @media(prefers-reduced-motion:reduce){.crane{animation:none}.build-part,.build-illustration,.build-finish-photo{transition:none!important}}
+
+/* Faster crane passes */
+.crane{animation-duration:2.8s!important}.crane path:nth-of-type(2){animation-duration:2.6s!important}
