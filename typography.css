@@ -1,0 +1,57 @@
+/* Clearer type hierarchy and easier reading across the full page */
+body{font-size:15px;line-height:1.65}
+.header .nav a{font-size:11px;font-weight:600;letter-spacing:.025em}
+.header-contact{font-size:9px;font-weight:700;letter-spacing:.1em}
+.brand-name{font-weight:700;letter-spacing:.11em}
+.brand-name small{font-size:8px;font-weight:600}
+.eyebrow{font-size:9px;font-weight:700;letter-spacing:.17em}
+.hero h1,.intro h2,.expertise h2,.projects h2,.approach h2,.contact h2{font-weight:600}
+.hero h1 em,.intro h2 em,.expertise h2 em,.projects h2 em,.approach h2 em,.contact h2 em{font-weight:500}
+.hero-lead{font-size:14px;line-height:1.8}
+.button{font-size:9px;font-weight:700}
+.hero-link{font-size:10px;font-weight:600}
+.intro-label{font-size:9px;font-weight:700}
+.body-copy,.expertise-top>p,.approach-copy>p:not(.eyebrow),.contact-details>p{font-size:13px;line-height:1.85}
+.text-link,.instagram-link,.contact-cta{font-size:10px;font-weight:700}
+.expertise-item h3{font-weight:600}
+.expertise-item p{font-size:12px;line-height:1.75}
+.expertise-index{font-size:12px}
+.project-meta,.image-index,.expertise-foot,.hero-side-note,.hero-bottom,.intro-photo figcaption{font-size:8px;font-weight:700}
+.project-caption{font-size:clamp(23px,2.5vw,35px);font-weight:500}
+.projects-note{font-size:10px}
+.stage-label,.stage-dot>span,.build-stage-head,.build-finish-photo>span{font-weight:700}
+.stage-copy h2{font-weight:600}
+.stage-copy p{font-size:11px;line-height:1.65}
+.contact-location span{font-size:8px;font-weight:700}
+.contact-location strong{font-weight:600}
+.contact-location small{font-size:10px}
+.footer-motto,.footer>a:not(.brand),.copyright{font-size:8px;font-weight:700}
+@media(max-width:900px){.body-copy,.expertise-top>p,.approach-copy>p:not(.eyebrow),.contact-details>p{font-size:12.5px}}
+@media(max-width:640px){
+  body{font-size:14px}
+  .header .brand{flex-shrink:0}
+  .header-contact{font-size:7px;letter-spacing:.05em;white-space:nowrap}
+  .header-contact span{margin-left:5px}
+  .header .nav a{font-size:30px}
+  .brand-name{font-size:8px}
+  .brand-name small{font-size:6px}
+  .eyebrow{font-size:8px;letter-spacing:.15em}
+  .hero-lead{font-size:12px;line-height:1.7}
+  .button{font-size:8px}
+  .hero-link{font-size:9px}
+  .body-copy,.expertise-top>p,.approach-copy>p:not(.eyebrow),.contact-details>p{font-size:12px;line-height:1.8}
+  .intro-label{font-size:8px}
+  .expertise-item h3{font-size:22px;font-weight:600}
+  .expertise-item p{font-size:11px;line-height:1.7}
+  .project-meta,.image-index,.expertise-foot,.hero-side-note,.hero-bottom,.intro-photo figcaption{font-size:7px}
+  .project-caption{font-size:20px}
+  .projects-note{font-size:9px}
+  .stage-copy h2{font-size:18px;font-weight:600}
+  .stage-copy p{font-size:10px;line-height:1.45}
+  .stage-label{font-size:7px}
+  .stage-dot>span{font-size:7px}
+  .contact-location span{font-size:7px}
+  .contact-location small{font-size:9px}
+  .footer-motto,.footer>a:not(.brand),.copyright{font-size:7px}
+}
+@media(max-width:380px){.hero-lead{font-size:11px}.body-copy,.expertise-top>p,.approach-copy>p:not(.eyebrow),.contact-details>p{font-size:11px}}
