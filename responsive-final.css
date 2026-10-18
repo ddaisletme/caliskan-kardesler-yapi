@@ -1,0 +1,42 @@
+/* Final responsive QA fixes shared by the homepage and detail pages. */
+main{overflow-x:clip}
+.instagram-draft textarea{font-size:16px}
+.draft-close{width:44px;height:44px}
+.stage-dot,.stage-replay{min-height:44px}
+.stage-replay{min-width:44px}
+:where(a,button,summary):focus-visible{outline:2px solid #a77630;outline-offset:4px}
+@media(max-width:640px){
+  .header,.header.scrolled{gap:10px}
+  .page-hero{margin-inline:0}
+  .page-hero p:last-child,.page-card p,.page-contact p{font-size:14px;line-height:1.8}
+  .page-note{font-size:11px}
+  .page-back{min-height:44px;align-items:center;font-size:11px}
+  .body-copy,.expertise-top>p,.approach-copy>p:not(.eyebrow),.expertise-item p{font-size:14px;line-height:1.8}
+  .build-hero .hero-lead{font-size:13px;line-height:1.75}
+  .stage-copy{min-height:108px}
+  .stage-copy h2{font-size:18px}
+  .stage-copy p{font-size:12px;line-height:1.65}
+  .stage-controls{gap:6px}
+  .stage-replay{margin-left:0;flex-shrink:0}
+  .stage-dot{padding-right:3px}
+  .stage-dot>span{font-size:10px}
+  .instagram-story{margin-inline:var(--gutter)}
+  .projects .instagram-story{margin-inline:0}
+  .instagram-story-actions{min-width:0}
+  .button,.build-hero .button{min-height:44px;font-size:11px}
+  .text-link,.instagram-link{min-height:44px;font-size:11px}
+  .header .nav .nav-feature a{min-height:36px;font-size:11px}
+  .nav-feature-bottom{flex-wrap:wrap}
+  .nav-feature-bottom>div b{font-size:10px}
+  .guide-note a{display:inline-flex;align-items:center;min-height:44px;font-size:11px}
+}
+@media(max-width:380px){
+  .header,.header.scrolled{padding-inline:12px;gap:8px}
+  .header .brand{gap:8px;min-width:0}
+  .header .brand-mark{font-size:30px}
+  .header .brand-name{font-size:8px;letter-spacing:.08em}
+  .header .brand-name small{font-size:6px}
+  .header .menu-toggle{width:82px;min-width:82px;padding-left:8px}
+  .instagram-story{padding:22px 16px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

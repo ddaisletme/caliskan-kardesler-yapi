@@ -206,6 +206,7 @@
   const replay = journey.querySelector('.stage-replay');
   let current = 0;
   let timer;
+  let initialTimer;
   let phaseHasRendered = false;
   if (gsapEnabled) {
     const crane = journey.querySelector('.crane');
@@ -230,6 +231,10 @@
     label.textContent = phase.label;
     title.textContent = phase.title;
     description.textContent = phase.description;
+    if (gsapEnabled) {
+      gsap.killTweensOf(layers);
+      gsap.set(layers, { clearProps: 'opacity,visibility,transform' });
+    }
     layers.forEach(layer => layer.classList.toggle('is-built', Number(layer.dataset.step) <= current));
     if (gsapEnabled && phaseHasRendered) {
       const newlyBuilt = layers.filter(layer => Number(layer.dataset.step) > previous && Number(layer.dataset.step) <= current);
@@ -247,7 +252,10 @@
     if (heroCount) heroCount.textContent = `${String(current + 1).padStart(2, '0')} / 05`;
   };
 
-  const stopSequence = () => window.clearInterval(timer);
+  const stopSequence = () => {
+    window.clearInterval(timer);
+    window.clearTimeout(initialTimer);
+  };
   const startSequence = () => {
     stopSequence();
     if (prefersReducedMotion) return;
@@ -269,5 +277,5 @@
     else if (current < phases.length - 1 && !prefersReducedMotion) startSequence();
   });
   showPhase(prefersReducedMotion ? phases.length - 1 : 0);
-  if (!prefersReducedMotion) window.setTimeout(startSequence, 400);
+  if (!prefersReducedMotion) initialTimer = window.setTimeout(startSequence, 400);
 })();
