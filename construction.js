@@ -94,6 +94,21 @@
   menuButton.addEventListener('click', () => setMenu(!body.classList.contains('nav-open')));
   window.addEventListener('pageshow', event => { if (event.persisted) setMenu(false, false); });
   nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false, false)));
+  document.addEventListener('click', event => {
+    const link = event.target.closest('a[href]');
+    if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || link.target === '_blank') return;
+    const destination = new URL(link.href, location.href);
+    const pagePath = path => path.replace(/index\.html$/, '');
+    if (destination.origin !== location.origin || pagePath(destination.pathname) !== pagePath(location.pathname) || !destination.hash) return;
+    const target = document.getElementById(decodeURIComponent(destination.hash.slice(1)));
+    if (!target) return;
+    event.preventDefault();
+    if (body.classList.contains('nav-open')) setMenu(false, false);
+    if (location.hash !== destination.hash) history.pushState(null, '', destination.hash);
+    target.setAttribute('tabindex', '-1');
+    target.focus({ preventScroll: true });
+    window.scrollTo({ top: Math.max(0, target.getBoundingClientRect().top + window.scrollY - header.offsetHeight - 16), behavior: prefersReducedMotion ? 'instant' : 'smooth' });
+  });
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape' && body.classList.contains('nav-open')) setMenu(false);
     if (event.key !== 'Tab' || !body.classList.contains('nav-open')) return;
