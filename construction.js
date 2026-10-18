@@ -84,10 +84,15 @@
     menuButton.setAttribute('aria-label', open ? 'Menüyü kapat' : 'Menüyü aç');
     const menuLabel = menuButton.querySelector('.menu-label');
     if (menuLabel) menuLabel.textContent = open ? 'KAPAT' : 'MENÜ';
-    if (open) nav.querySelector('a')?.focus({ preventScroll: true });
+    document.querySelectorAll('main, footer, .mobile-contact, .header > .brand, .header-contact').forEach(element => { element.inert = open; });
+    if (open) nav.scrollTop = 0;
+    if (open) requestAnimationFrame(() => {
+      if (body.classList.contains('nav-open')) nav.querySelector('a')?.focus({ preventScroll: true });
+    });
     else if (restoreFocus) menuButton.focus({ preventScroll: true });
   };
   menuButton.addEventListener('click', () => setMenu(!body.classList.contains('nav-open')));
+  window.addEventListener('pageshow', event => { if (event.persisted) setMenu(false, false); });
   nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false, false)));
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape' && body.classList.contains('nav-open')) setMenu(false);
@@ -104,6 +109,52 @@
     } else if (event.shiftKey && document.activeElement === menuButton) {
       event.preventDefault();
       last.focus({ preventScroll: true });
+    }
+  });
+
+  // Review and copy a draft before opening Instagram. Nothing is sent by this site.
+  const draftDialog = document.createElement('dialog');
+  draftDialog.className = 'instagram-draft';
+  draftDialog.setAttribute('aria-labelledby', 'instagram-draft-title');
+  draftDialog.innerHTML = `
+    <button class="draft-close" type="button" aria-label="Mesaj taslağını kapat">×</button>
+    <p class="eyebrow">İLK ADIMI BİRLİKTE ATALIM</p>
+    <h2 id="instagram-draft-title">Projenizi konuşalım.</h2>
+    <p>Mesajı düzenleyip kopyalayın; Instagram sohbetine yapıştırın. Gönderme kararı sizde.</p>
+    <label for="instagram-draft-text">Mesaj taslağınız</label>
+    <textarea id="instagram-draft-text" rows="7"></textarea>
+    <div class="draft-actions"><button type="button" class="button button-gold" data-copy-draft>Mesajı kopyala <span>↗</span></button>
+    <a class="button" href="https://ig.me/m/caliskankardesleryapi" target="_blank" rel="noopener noreferrer">Instagram’da sohbeti aç <span>↗</span></a></div>
+    <p class="draft-status" role="status" aria-live="polite"></p>
+    <small>Sohbet açılmazsa <a href="https://www.instagram.com/caliskankardesleryapi/" target="_blank" rel="noopener noreferrer">profilimizdeki Mesaj düğmesini kullanın ↗</a></small>`;
+  body.append(draftDialog);
+  const draftText = draftDialog.querySelector('textarea');
+  const draftStatus = draftDialog.querySelector('.draft-status');
+  document.querySelectorAll('[data-instagram-message]').forEach(trigger => {
+    trigger.addEventListener('click', event => {
+      event.preventDefault();
+      if (body.classList.contains('nav-open')) setMenu(false, false);
+      draftText.value = trigger.textContent.includes('Deneyiminizi')
+        ? 'Merhaba Çalışkan Kardeşler Yapı, birlikte çalıştığımız projeyle ilgili deneyimimi paylaşmak istiyorum.\n\nDeneyimim: '
+        : 'Merhaba Çalışkan Kardeşler Yapı, web sitenizdeki projeleri inceledim. Cephe uygulaması hakkında bilgi almak istiyorum.\n\nProjenin konumu: \nDüşündüğüm uygulama: \nYaklaşık alan / ek bilgiler: ';
+      draftStatus.textContent = '';
+      draftDialog.showModal();
+    });
+  });
+  draftDialog.querySelector('.draft-close').addEventListener('click', () => draftDialog.close());
+  draftDialog.addEventListener('click', event => {
+    if (event.target !== draftDialog) return;
+    const bounds = draftDialog.getBoundingClientRect();
+    if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) draftDialog.close();
+  });
+  draftDialog.querySelector('[data-copy-draft]').addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(draftText.value);
+      draftStatus.textContent = 'Mesaj kopyalandı. Instagram sohbetine yapıştırabilirsiniz.';
+    } catch {
+      draftText.focus();
+      draftText.select();
+      draftStatus.textContent = 'Metni seçtik. Kopyalayıp Instagram sohbetine yapıştırın.';
     }
   });
 

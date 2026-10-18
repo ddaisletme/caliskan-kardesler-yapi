@@ -170,3 +170,45 @@ html{overflow-x:clip}
 .nav-open .menu-toggle i:first-of-type{transform:translateY(0) rotate(45deg)}
 .nav-open .menu-toggle i:last-of-type{transform:translateY(0) rotate(-45deg)}
 @media(max-width:640px){.menu-toggle{width:90px;min-width:90px;flex-direction:row;padding:0 30px 0 10px}.menu-toggle .menu-label{font-size:8px;letter-spacing:.1em}.menu-toggle i{right:11px;width:16px}}
+
+/* Shared menu fixes apply to every page, including a scrolled header. */
+html{scrollbar-gutter:stable}
+body.nav-open .header{position:fixed;background:#1b1e1a;-webkit-backdrop-filter:none;backdrop-filter:none}
+body.nav-open .nav{height:100dvh;overscroll-behavior:contain;align-items:safe center}
+.menu-toggle{gap:0;flex-shrink:0}
+.nav-open .menu-toggle .menu-label{opacity:1}
+.nav-open .nav-feature a{animation:none}
+.nav-feature-copy{grid-column:1/-1}
+@media(max-width:640px){.nav-feature-copy{grid-column:2}.nav{padding-bottom:max(28px,env(safe-area-inset-bottom))}.nav-open .menu-toggle{padding-left:8px}.menu-toggle{width:100px;min-width:100px}}
+@media(max-height:600px) and (min-width:641px){.nav{align-items:start;padding-top:110px}.nav a{font-size:36px;padding-block:8px}.nav-feature-photo{height:140px}}
+.instagram-story{display:flex;justify-content:space-between;align-items:center;gap:36px;margin-top:46px;padding:32px;border:1px solid #c9c1b1;background:#e8e3d7}
+.instagram-story .eyebrow{margin-bottom:15px;color:#75603e}
+.instagram-story h3{font:600 clamp(27px,3vw,42px)/1.13 var(--display);letter-spacing:-.05em;margin:0 0 16px}
+.instagram-story h3 em{font-family:var(--serif);color:#896638}
+.instagram-story p:not(.eyebrow){max-width:480px;font:400 13px/1.8 var(--sans);color:#55574e;margin:0}
+.instagram-story-actions{display:flex;flex-direction:column;align-items:stretch;gap:12px;flex-shrink:0}
+.instagram-story .button{font-size:11px;justify-content:space-between;min-height:48px;height:auto;padding:15px 18px;white-space:normal}
+.instagram-draft-button{border:1px solid #ada18a;background:transparent;color:#2c3028;cursor:pointer;text-align:left}
+.instagram-story small{font:500 11px var(--sans);color:#67695f}
+.instagram-draft{width:min(600px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;padding:38px 30px 28px;background:#f2efe7;color:#24271f;border:1px solid #b5a583}
+.instagram-draft::backdrop{background:#101710cc;backdrop-filter:blur(7px)}
+.instagram-draft h2{font:600 clamp(27px,5vw,39px)/1.1 var(--display);letter-spacing:-.05em;margin:0 0 18px}
+.instagram-draft p{font:400 13px/1.7 var(--sans)}
+.instagram-draft .eyebrow{font-size:9px;margin:0 28px 18px 0;color:#806135}
+.instagram-draft label{display:block;font:600 12px var(--sans);margin:22px 0 9px}
+.instagram-draft textarea{display:block;width:100%;resize:vertical;min-height:185px;padding:14px;background:#fffdf7;color:#24271f;border:1px solid #aaa391;font:400 14px/1.65 var(--sans)}
+.draft-close{position:absolute;right:10px;top:10px;width:36px;height:36px;background:transparent;border:1px solid #a89d87;font-size:25px;cursor:pointer}
+.draft-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+.draft-actions .button{font-size:11px;border:1px solid #b5a583;cursor:pointer}
+.draft-status{min-height:22px;color:#3c664f}
+.instagram-draft small{font:400 11px/1.7 var(--sans)}
+.instagram-draft small a{text-decoration:underline;text-underline-offset:3px}
+.instagram-draft :focus-visible,.instagram-story :focus-visible{outline:2px solid #8a622c;outline-offset:4px}
+body:has(.instagram-draft[open]){overflow:hidden}
+@media(max-width:640px){.instagram-story{display:block;margin-top:25px;padding:24px 20px}.instagram-story-actions{margin-top:23px}.instagram-draft{padding:45px 20px 22px}.draft-actions{flex-direction:column}.draft-actions .button{justify-content:space-between}.project-action{font-size:8px}}
+body.nav-open .header{z-index:100}
+.header .nav .nav-inner>a{font-size:clamp(36px,5.2vw,76px);letter-spacing:-.065em}
+.header .nav .nav-feature a{font-size:11px;letter-spacing:.025em}
+@media(max-width:1000px) and (min-width:641px){.header .nav .nav-inner>a{font-size:clamp(34px,5vw,54px)}}
+@media(max-width:640px){.header .nav .nav-inner>a{font-size:clamp(29px,8vw,42px)}.header .nav .nav-feature a{font-size:9px}}
+@media(max-height:600px) and (min-width:641px){.header .nav .nav-inner>a{font-size:36px}}

@@ -17,11 +17,17 @@
   <link rel="stylesheet" href="construction-stage.css?v=4">
   <link rel="stylesheet" href="typography.css?v=2">
   <link rel="stylesheet" href="storytelling.css?v=2">
-  <link rel="stylesheet" href="identity.css?v=11">
+  <link rel="stylesheet" href="identity.css?v=12">
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js" defer></script>
-  <script src="construction.js?v=6" defer></script>
-<style>.project-lightbox{position:fixed;inset:0;width:min(94vw,1200px);height:min(92dvh,900px);max-width:none;max-height:none;margin:auto;padding:52px 20px 18px;border:1px solid #ffffff3d;background:#111;color:#fff;overflow:hidden}.project-lightbox::backdrop{background:#090b0ae8;backdrop-filter:blur(8px)}.project-lightbox img{display:block;width:100%;height:calc(100% - 38px);object-fit:contain}.project-lightbox p{margin:10px 0 0;text-align:center;font:500 16px 'Playfair Display',serif}.project-lightbox button{position:absolute;top:10px;right:14px;width:40px;height:40px;border:1px solid #ffffff80;border-radius:50%;background:transparent;color:white;font-size:28px;cursor:pointer}body.nav-open .header.scrolled{-webkit-backdrop-filter:none;backdrop-filter:none}</style></head>
+  <script src="construction.js?v=7" defer></script>
+<style>.project-lightbox{position:fixed;inset:0;width:min(94vw,1200px);height:min(92dvh,900px);max-width:none;max-height:none;margin:auto;padding:52px 20px 18px;border:1px solid #ffffff3d;background:#111;color:#fff;overflow:hidden}.project-lightbox::backdrop{background:#090b0ae8;backdrop-filter:blur(8px)}.project-lightbox img{display:block;width:100%;height:calc(100% - 38px);object-fit:contain}.project-lightbox p{margin:10px 0 0;text-align:center;font:500 16px 'Playfair Display',serif}.project-lightbox button{position:absolute;top:10px;right:14px;width:40px;height:40px;border:1px solid #ffffff80;border-radius:50%;background:transparent;color:white;font-size:28px;cursor:pointer}body.nav-open .header.scrolled{-webkit-backdrop-filter:none;backdrop-filter:none}</style><script>
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+if (performance.getEntriesByType('navigation')[0]?.type === 'reload') {
+  history.replaceState(history.state, '', location.pathname + location.search);
+  addEventListener('pageshow', () => scrollTo({top: 0, left: 0, behavior: 'instant'}), {once: true});
+}
+</script></head>
 <body>
   <header class="header" id="top">
     <a class="brand" href="index.html#top" aria-label="Çalışkan Kardeşler Yapı ana sayfa">
@@ -36,7 +42,7 @@
       <aside class="nav-feature" aria-label="Öne çıkan proje ve hızlı bağlantılar">
         <div class="nav-feature-photo"><img src="assets/instagram-project-night.jpg" alt="Instagram'da paylaşılan sıcak cephe aydınlatmalı yapı"><span>INSTAGRAM’DAN / SAHADAN</span></div>
         <div class="nav-feature-copy"><p>CEPHEDE ÖNE ÇIKANLAR</p><h2>Detaylar<br><em>fark yaratır.</em></h2><a href="projeler.html">Projeleri incele <b>↗</b></a></div>
-        <div class="nav-feature-bottom"><div><span>UZMANLIK</span><b>Fibercement · Betopan · Dış cephe</b></div><a href="https://www.instagram.com/caliskankardesleryapi/" target="_blank" rel="noopener noreferrer">Instagram’da bize yazın <b>↗</b></a></div>
+        <div class="nav-feature-bottom"><div><span>UZMANLIK</span><b>Fibercement · Betopan · Dış cephe</b></div><a data-instagram-message href="https://www.instagram.com/caliskankardesleryapi/" target="_blank" rel="noopener noreferrer">Instagram’da bize yazın <b>↗</b></a></div>
       </aside>
     </nav>
     <a class="header-contact" href="iletisim.html">PROJENİZİ KONUŞALIM <span>↗</span></a>
@@ -173,10 +179,10 @@
     <section class="projects section-pad" id="projeler">
       <div class="projects-heading reveal"><div><p class="eyebrow"><span></span> SAHADAN KARELER</p><h2>İşlerimizden<br><em>izler.</em></h2></div><a class="instagram-link" href="https://www.instagram.com/caliskankardesleryapi/" target="_blank" rel="noopener noreferrer"><span class="ig-icon">◎</span> Instagram’da tüm projeler <b>↗</b></a></div>
       <div class="project-grid">
-        <a class="project-card project-card-large reveal" href="assets/instagram-project-lighting-sharp.jpg" aria-label="Cephe görselini büyüt"><img src="assets/instagram-project-lighting-sharp.jpg" alt="Mavi gece fonunda altın ışık çizgileriyle tamamlanan cephe" loading="lazy"><span class="project-overlay"></span><span class="project-meta"><span>CEPHE UYGULAMASI</span><span>01 / +</span></span><span class="project-caption">Güçlü bir ilk izlenim.</span><span class="project-action">Görseli büyüt <b>↗</b></span></a>
-        <a class="project-card project-card-tall reveal" href="assets/instagram-project-night.jpg" aria-label="Konut cephesi görselini büyüt"><img src="assets/instagram-project-night.jpg" alt="Sıcak aydınlatmalı modern konut cephesi" loading="lazy"><span class="project-overlay"></span><span class="project-meta"><span>KONUT CEPHESİ</span><span>02 / +</span></span><span class="project-caption">Mimariyle uyum içinde.</span><span class="project-action">Görseli büyüt <b>↗</b></span></a>
-        <a class="project-card reveal" href="assets/instagram-project-day-sharp.jpg" aria-label="Dış cephe görselini büyüt"><img src="assets/instagram-project-day-sharp.jpg" alt="Gri ve füme tonlarda modern dış cephe uygulaması" loading="lazy"><span class="project-overlay"></span><span class="project-meta"><span>DIŞ CEPHE</span><span>03 / +</span></span><span class="project-caption">Sade çizgiler, net duruş.</span><span class="project-action">Görseli büyüt <b>↗</b></span></a>
-      </div>
+        <a class="project-card project-card-large reveal" href="https://www.instagram.com/caliskankardesleryapi/" target="_blank" rel="noopener noreferrer" aria-label="Projeleri Instagram’da inceleyin (yeni sekme)"><img src="assets/instagram-project-lighting-sharp.jpg" alt="Mavi gece fonunda altın ışık çizgileriyle tamamlanan cephe" loading="lazy"><span class="project-overlay"></span><span class="project-meta"><span>CEPHE UYGULAMASI</span><span>01 / ↗</span></span><span class="project-caption">Güçlü bir ilk izlenim.</span><span class="project-action">Instagram’da incele <b>↗</b></span></a>
+        <a class="project-card project-card-tall reveal" href="https://www.instagram.com/caliskankardesleryapi/" target="_blank" rel="noopener noreferrer" aria-label="Projeleri Instagram’da inceleyin (yeni sekme)"><img src="assets/instagram-project-night.jpg" alt="Sıcak aydınlatmalı modern konut cephesi" loading="lazy"><span class="project-overlay"></span><span class="project-meta"><span>KONUT CEPHESİ</span><span>02 / ↗</span></span><span class="project-caption">Mimariyle uyum içinde.</span><span class="project-action">Instagram’da incele <b>↗</b></span></a>
+        <a class="project-card reveal" href="https://www.instagram.com/caliskankardesleryapi/" target="_blank" rel="noopener noreferrer" aria-label="Projeleri Instagram’da inceleyin (yeni sekme)"><img src="assets/instagram-project-day-sharp.jpg" alt="Gri ve füme tonlarda modern dış cephe uygulaması" loading="lazy"><span class="project-overlay"></span><span class="project-meta"><span>DIŞ CEPHE</span><span>03 / ↗</span></span><span class="project-caption">Sade çizgiler, net duruş.</span><span class="project-action">Instagram’da incele <b>↗</b></span></a>
+      </div><div class="instagram-story"><div><p class="eyebrow">INSTAGRAM GÜNLÜĞÜ</p><h3>Sahadan detaylar.<br><em>Yeni projeler, yeni izler.</em></h3><p>Uygulamalarımızı, cephe detaylarını ve yeni paylaşımlarımızı Instagram hesabımızdan takip edin.</p></div><div class="instagram-story-actions"><a class="button button-gold" href="https://www.instagram.com/caliskankardesleryapi/" target="_blank" rel="noopener noreferrer">Instagram’da keşfet <span>↗</span></a><button class="button instagram-draft-button" type="button" data-instagram-message>Projeniz için mesaj hazırlayın <span>↗</span></button><small>@caliskankardesleryapi</small></div></div>
     </section>
 
     <section class="approach">
@@ -187,17 +193,17 @@
 
     <section class="reviews section-pad" id="yorumlar">
       <div class="review-heading reveal"><p class="eyebrow light"><span></span> MÜŞTERİ DENEYİMLERİ</p><h2>Birlikte yapılan iş,<br><em>iz bırakır.</em></h2></div>
-      <article class="review-card reveal"><span class="review-mark" aria-hidden="true">“</span><div><span class="review-status">GERÇEK MÜŞTERİ DENEYİMLERİ</span><h3>Birlikte çalıştıysak, deneyiminizi duymak isteriz.</h3><p>Görüşünüzü Instagram üzerinden iletebilirsiniz. Açık izniniz olmadan adınız veya yorumunuz sitede yayınlanmaz.</p><a href="https://www.instagram.com/caliskankardesleryapi/" target="_blank" rel="noopener noreferrer">Deneyiminizi paylaşın <b>↗</b></a></div><span class="review-monogram">ÇK<span>.</span></span></article>
+      <article class="review-card reveal"><span class="review-mark" aria-hidden="true">“</span><div><span class="review-status">GERÇEK MÜŞTERİ DENEYİMLERİ</span><h3>Birlikte çalıştıysak, deneyiminizi duymak isteriz.</h3><p>Görüşünüzü Instagram üzerinden iletebilirsiniz. Açık izniniz olmadan adınız veya yorumunuz sitede yayınlanmaz.</p><a data-instagram-message href="https://www.instagram.com/caliskankardesleryapi/" target="_blank" rel="noopener noreferrer">Deneyiminizi paylaşın <b>↗</b></a></div><span class="review-monogram">ÇK<span>.</span></span></article>
     </section>
 
     <section class="contact section-pad" id="iletisim">
       <div class="contact-heading reveal"><p class="eyebrow"><span></span> YENİ BİR BAŞLANGIÇ</p><h2>Projenizi<br><em>birlikte</em> konuşalım.</h2></div>
-      <div class="contact-details reveal"><p>Yeni bir cephe uygulaması planlıyorsanız bize ulaşın. İhtiyacınızı ve proje detaylarını birlikte değerlendirelim.</p><a class="contact-cta" href="https://www.instagram.com/caliskankardesleryapi/" target="_blank" rel="noopener noreferrer"><span>Instagram profilini açıp mesaj gönderin</span><b>↗</b></a><div class="contact-brief"><h3>İlk görüşmeyi kolaylaştırmak için</h3><ul><li>Projenin konumu</li><li>Mevcut cephenin fotoğrafları</li><li>Düşündüğünüz uygulama türü</li></ul><p>Elinizdeki bilgiler yeterli; tüm detayların baştan hazır olması gerekmez.</p></div><div class="contact-location"><span>ÇALIŞMA BÖLGESİ</span><strong>İstanbul · Beylikdüzü</strong><small>Avcılar ve çevre ilçeler</small></div></div>
+      <div class="contact-details reveal"><p>Yeni bir cephe uygulaması planlıyorsanız bize ulaşın. İhtiyacınızı ve proje detaylarını birlikte değerlendirelim.</p><a data-instagram-message class="contact-cta" href="https://www.instagram.com/caliskankardesleryapi/" target="_blank" rel="noopener noreferrer"><span>Instagram için mesaj hazırlayın</span><b>↗</b></a><div class="contact-brief"><h3>İlk görüşmeyi kolaylaştırmak için</h3><ul><li>Projenin konumu</li><li>Mevcut cephenin fotoğrafları</li><li>Düşündüğünüz uygulama türü</li></ul><p>Elinizdeki bilgiler yeterli; tüm detayların baştan hazır olması gerekmez.</p></div><div class="contact-location"><span>ÇALIŞMA BÖLGESİ</span><strong>İstanbul · Beylikdüzü</strong><small>Avcılar ve çevre ilçeler</small></div></div>
     </section>
   </main>
 
-  <a class="mobile-contact" href="https://www.instagram.com/caliskankardesleryapi/" target="_blank" rel="noopener noreferrer" aria-label="Instagram üzerinden proje görüşmesi başlatın"><span>DM</span><b>↗</b></a>
+  <a data-instagram-message class="mobile-contact" href="https://www.instagram.com/caliskankardesleryapi/" target="_blank" rel="noopener noreferrer" aria-label="Instagram üzerinden proje görüşmesi başlatın"><span>DM</span><b>↗</b></a>
 
   <footer class="footer"><a class="brand footer-brand" href="#top"><span class="brand-mark">ÇK<span>.</span></span><span class="brand-name">ÇALIŞKAN KARDEŞLER<small>YAPI · CEPHE SİSTEMLERİ</small></span></a><span class="footer-motto">GÜÇLÜ YAPILAR, ÖZENLİ DETAYLAR.</span><a href="https://www.instagram.com/caliskankardesleryapi/" target="_blank" rel="noopener noreferrer">INSTAGRAM ↗</a><span class="copyright">© 2026 ÇALIŞKAN KARDEŞLER YAPI</span></footer>
-<dialog class="project-lightbox" aria-label="Proje fotoğrafı"><button type="button" aria-label="Kapat">×</button><img alt=""><p></p></dialog><script>const projectViewer=document.querySelector(".project-lightbox"),projectImage=projectViewer.querySelector("img"),projectCaption=projectViewer.querySelector("p");document.querySelectorAll(".project-card").forEach(card=>card.addEventListener("click",event=>{event.preventDefault();const image=card.querySelector("img");projectImage.src=image.src;projectImage.alt=image.alt;projectCaption.textContent=card.querySelector(".project-caption").textContent;projectViewer.showModal()}));projectViewer.querySelector("button").addEventListener("click",()=>projectViewer.close());projectViewer.addEventListener("click",event=>{if(event.target===projectViewer)projectViewer.close()});</script></body>
+</body>
 </html>
