@@ -198,10 +198,10 @@
       crane.style.animation = 'none';
       const boom = crane.querySelector('path:nth-of-type(2)');
       if (boom) boom.style.animation = 'none';
-      gsap.to(crane, { rotation: 2.1, duration: .62, ease: 'sine.inOut', repeat: -1, yoyo: true, transformOrigin: '112px 391px' });
+      gsap.to(crane, { rotation: 2.1, duration: .45, ease: 'sine.inOut', repeat: -1, yoyo: true, transformOrigin: '112px 391px' });
       const trolley = crane.querySelector('circle');
       const cable = crane.querySelector('path:nth-of-type(4)');
-      if (trolley && cable) gsap.to([trolley, cable], { x: 30, duration: 1.05, ease: 'sine.inOut', repeat: -1, yoyo: true });
+      if (trolley && cable) gsap.to([trolley, cable], { x: 30, duration: .65, ease: 'sine.inOut', repeat: -1, yoyo: true });
       gsap.to(crane, { filter: 'drop-shadow(0 0 10px rgba(243,202,121,.5))', duration: 1.1, ease: 'sine.inOut', repeat: -1, yoyo: true });
     }
   }
@@ -239,7 +239,7 @@
     timer = window.setInterval(() => {
       if (current >= phases.length - 1) return stopSequence();
       showPhase(current + 1);
-    }, 3400);
+    }, 1800);
   };
   dots.forEach(dot => dot.addEventListener('click', () => {
     stopSequence();
@@ -254,5 +254,5 @@
     else if (current < phases.length - 1 && !prefersReducedMotion) startSequence();
   });
   showPhase(prefersReducedMotion ? phases.length - 1 : 0);
-  if (!prefersReducedMotion) window.setTimeout(startSequence, 1200);
+  if (!prefersReducedMotion) window.setTimeout(startSequence, 400);
 })();

@@ -11,4 +11,4 @@
 @media(prefers-reduced-motion:reduce){.crane{animation:none}.build-part,.build-illustration,.build-finish-photo{transition:none!important}}
 
 /* Faster crane passes */
-.crane{animation-duration:2.8s!important}.crane path:nth-of-type(2){animation-duration:2.6s!important}
+.crane{animation-duration:1.6s!important}.crane path:nth-of-type(2){animation-duration:1.4s!important}
